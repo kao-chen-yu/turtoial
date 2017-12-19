@@ -15,7 +15,7 @@
    <repository>
      <id>external</id>
      <name>External Project Repo</name>
-     <url>file:///${project.basedir}/lib</url>
+     <url>C:/Users/MSI-I7/Documents/aligene/myapp/BOOT-INF/lib</url>
    </repository>
 </repositories>
 
