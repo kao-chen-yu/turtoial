@@ -11,6 +11,14 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
+<repositories>  
+   <repository>
+     <id>external</id>
+     <name>External Project Repo</name>
+     <url>file:///${project.basedir}/lib</url>
+   </repository>
+</repositories>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
