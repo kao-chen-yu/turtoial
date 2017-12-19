@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 	
-	@RequestMapping("/")
+	@RequestMapping(value = "/test")
 	public String home() {
+	
+		System.out.println("-----------------------------------------------------");
       return "Hello World!";
     }
 
