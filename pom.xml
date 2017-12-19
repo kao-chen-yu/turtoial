@@ -35,6 +35,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		  <dependency>
+    		<groupId>com.example</groupId>
+    		<artifactId>semantic-execute-meta</artifactId>
+    		<version>1.0.4</version>
+  		  </dependency>
+  
 	</dependencies>
 
 	<build>
