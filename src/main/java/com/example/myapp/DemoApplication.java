@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @SpringBootApplication
 public class DemoApplication {
 	
-	@RequestMapping(value = "/test")
-	public String home() {
-	
-		System.out.println("-----------------------------------------------------");
+	@RequestMapping("/")
+    @ResponseBody
+    String home() {
       return "Hello World!";
     }
 	
