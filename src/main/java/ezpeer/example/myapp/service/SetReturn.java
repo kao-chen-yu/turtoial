@@ -2,6 +2,8 @@ package ezpeer.example.myapp.service;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+
 import ezpeer.example.myapp.vo.ReturnModel;
 import ezpeer.example.myapp.vo.ReturnValueModel;
 
@@ -16,9 +18,9 @@ public class SetReturn {
 		result.setReturnCode("0");
 		result.setReturnErrorSolution(" ");
 		result.setReturnMessage("Success");
-		
+		 Gson gson = new Gson();
 		ReturnValueModel returnValue = setReturnValueModel();
-		result.setReturnValue(returnValue.toString());
+		result.setReturnValue(gson.toJson(returnValue));
 		return result;
 	}
 	
