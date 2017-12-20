@@ -38,6 +38,7 @@ public class DemoApplication {
 		//System.out.println(taskQuery);
 		ReturnModel returnResult = result.setReturnModel();
         
+		System.out.println(returnResult.toString());
 		return returnResult;
     }
 	
