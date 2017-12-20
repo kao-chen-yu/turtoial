@@ -1,5 +1,7 @@
 package ezpeer.example.myapp.vo;
 
+import java.util.List;
+
 public class ConversationRecord {
 
 	private String botId;
@@ -10,7 +12,7 @@ public class ConversationRecord {
 	private String intentName;
 	private String timestamp;
 	private String resultType;
-	private String slotEntities;
+	private List<SlotEntity> slotEntities;
 	
 	public String getBotId() {
 		return botId;
@@ -60,10 +62,10 @@ public class ConversationRecord {
 	public void setResultType(String resultType) {
 		this.resultType = resultType;
 	}
-	public String getSlotEntities() {
+	public List<SlotEntity> getSlotEntities() {
 		return slotEntities;
 	}
-	public void setSlotEntities(String slotEntities) {
+	public void setSlotEntities(List<SlotEntity> slotEntities) {
 		this.slotEntities = slotEntities;
 	}
 	
