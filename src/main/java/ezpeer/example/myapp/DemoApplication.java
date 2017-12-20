@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import ezpeer.example.myapp.service.SetReturn;
 import ezpeer.example.myapp.vo.ReturnModel;
 
@@ -29,7 +31,7 @@ public class DemoApplication {
     }
 	
 	@RequestMapping(value = "/skill/weather", method = RequestMethod.POST)
-    public @ResponseBody ReturnModel getResponse(@RequestBody String taskQuery) {
+    public @ResponseBody String getResponse(@RequestBody String taskQuery) {
  
         /**
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
@@ -37,9 +39,10 @@ public class DemoApplication {
 		System.out.println("---------skill ---------------");
 		//System.out.println(taskQuery);
 		ReturnModel returnResult = result.setReturnModel();
-        
-		System.out.println(returnResult.toString());
-		return returnResult;
+		 Gson gson = new Gson();
+		 
+		System.out.println(gson.toJson(returnResult));
+		return gson.toJson(returnResult);
     }
 	
 	public static void main(String[] args) {
