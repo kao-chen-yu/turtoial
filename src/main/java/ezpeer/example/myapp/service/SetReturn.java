@@ -53,8 +53,21 @@ public class SetReturn {
 			break;
 		
 		case "search_singer" :
-			singerName = query.getSlotEntities().get(0).getOriginalValue();
-			returnValue.setReply("你要聽" + singerName + "的哪一首歌 ? ");
+			if(query.getSlotEntities().size()>1) {
+				if("song_name".equals(query.getSlotEntities().get(0).getIntentParameterName())) {
+					songName = query.getSlotEntities().get(0).getOriginalValue();
+					singerName = query.getSlotEntities().get(1).getOriginalValue();
+				}else {
+					singerName = query.getSlotEntities().get(0).getOriginalValue();
+					songName = query.getSlotEntities().get(1).getOriginalValue();	
+				}
+				returnValue.setReply("你要聽" + singerName + "的 " + songName);
+			}
+			else {
+				singerName = query.getSlotEntities().get(0).getOriginalValue();
+				returnValue.setReply("你要聽" + singerName + "的哪一首歌 ? ");
+			}
+			
 			break;
 			
 		//case "search_singer_custom" :
