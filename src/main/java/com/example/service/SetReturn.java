@@ -8,6 +8,7 @@ import com.example.vo.ReturnValueModel;
 @Service
 public class SetReturn {
 	
+	
 	public ReturnModel setReturnModel() {
 		
 		ReturnModel result = new ReturnModel();
