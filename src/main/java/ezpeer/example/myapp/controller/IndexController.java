@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.da.coin.ide.spi.standard.TaskQuery;
 import com.google.gson.Gson;
 
 import ezpeer.example.myapp.service.SetReturn;
 import ezpeer.example.myapp.vo.ReturnModel;
+import ezpeer.example.myapp.vo.TaskQuery;
 
 
 @RestController
