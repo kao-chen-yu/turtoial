@@ -35,9 +35,12 @@ public class IndexController {
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
 		System.out.println("---------skill ---------------");
-		//System.out.println(taskQuery);
+		System.out.println(taskQuery);
 		TaskQuery query = gson.fromJson(taskQuery, TaskQuery.class);
+		System.out.println("---------slot entity ---------------");
 		System.out.println(query.getIntentName());
+		
+		
 		ReturnModel returnResult = result.setReturnModel();
 		
 		
