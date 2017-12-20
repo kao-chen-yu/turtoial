@@ -1,4 +1,4 @@
-package com.example.vo;
+package ezpeer.example.myapp.vo;
 
 public class ReturnValueModel {
 	

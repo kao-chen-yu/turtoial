@@ -1,4 +1,4 @@
-package com.example.controller;
+package ezpeer.example.myapp.controller;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

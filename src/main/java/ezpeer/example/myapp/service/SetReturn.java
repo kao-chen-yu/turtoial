@@ -1,9 +1,9 @@
-package com.example.service;
+package ezpeer.example.myapp.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.vo.ReturnModel;
-import com.example.vo.ReturnValueModel;
+import ezpeer.example.myapp.vo.ReturnModel;
+import ezpeer.example.myapp.vo.ReturnValueModel;
 
 @Service
 public class SetReturn {

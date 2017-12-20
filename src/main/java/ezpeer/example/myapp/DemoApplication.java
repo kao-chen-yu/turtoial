@@ -1,4 +1,4 @@
-package com.example.myapp;
+package ezpeer.example.myapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.service.SetReturn;
-import com.example.vo.ReturnModel;
+import ezpeer.example.myapp.service.SetReturn;
+import ezpeer.example.myapp.vo.ReturnModel;
 
 
 @Controller
