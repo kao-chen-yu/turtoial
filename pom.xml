@@ -11,13 +11,6 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
-<repositories>  
-   <repository>
-     <id>external</id>
-     <name>External Project Repo</name>
-     <url>file://${basedir}\BOOT-INF\lib</url>
-   </repository>
-</repositories>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -44,11 +37,15 @@
 			<scope>test</scope>
 		</dependency>
 		
-		  <dependency>
-    		<groupId>com.example</groupId>
-    		<artifactId>semantic-execute-meta</artifactId>
-    		<version>1.0.4</version>
-  		  </dependency>
+		  
+  		  
+  		  <dependency>
+			<groupId>com.example</groupId>
+			<artifactId>semantic-execute-meta</artifactId>
+			<version>1.0.4</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/semantic-execute-meta-1.0.4.jar</systemPath>
+			</dependency>
   
 	</dependencies>
 
