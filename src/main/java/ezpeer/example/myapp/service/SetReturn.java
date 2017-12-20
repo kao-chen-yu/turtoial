@@ -21,7 +21,7 @@ public class SetReturn {
 		 Gson gson = new Gson();
 		ReturnValueModel returnValue = setReturnValueModel();
 		System.out.println(gson.toJson(returnValue));
-		result.setReturnValue(gson.toJson(returnValue));
+		result.setReturnValue(returnValue);
 		return result;
 	}
 	

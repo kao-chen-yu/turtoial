@@ -5,7 +5,7 @@ public class ReturnModel {
 	private String returnCode;
 	private String returnErrorSolution;
 	private String returnMessage;
-	private String returnValue;
+	private ReturnValueModel returnValue;
 	
 	public String getReturnCode() {
 		return returnCode;
@@ -25,10 +25,10 @@ public class ReturnModel {
 	public void setReturnMessage(String returnMessage) {
 		this.returnMessage = returnMessage;
 	}
-	public String getReturnValue() {
+	public ReturnValueModel getReturnValue() {
 		return returnValue;
 	}
-	public void setReturnValue(String returnValue) {
+	public void setReturnValue(ReturnValueModel returnValue) {
 		this.returnValue = returnValue;
 	}
 	
