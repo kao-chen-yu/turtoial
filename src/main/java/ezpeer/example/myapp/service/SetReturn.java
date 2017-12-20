@@ -29,12 +29,17 @@ public class SetReturn {
 	public ReturnValueModel setReturnValueModel(TaskQuery query) {
 		
 		ReturnValueModel returnValue = new ReturnValueModel();
-		
+		String songName = "";
+		String singerName = "";
 		switch(query.getIntentName()) {
-		
+
+		case "call_MyMusic" :
+			System.out.println("-------wake up MyMusic--------");
+			returnValue.setReply(" MyMusic 服務啟動...請問要聽哪首歌? ");
+			break;
+			
 		case "search_song" :
-			String songName = "";
-			String singerName = "";
+			
 			System.out.println("-------ya it is search_song--------");
 			if("song_name".equals(query.getSlotEntities().get(0).getIntentParameterName())) {
 				songName = query.getSlotEntities().get(0).getOriginalValue();
@@ -46,10 +51,14 @@ public class SetReturn {
 			System.out.println(songName);
 			returnValue.setReply("你要聽的歌曲為 :" + singerName + "的" + songName);
 			break;
-		case "call_MyMusic" :
-			System.out.println("-------wake up MyMusic--------");
-			returnValue.setReply(" MyMusic 服務啟動...請問要聽哪首歌? ");
+		
+		case "search_singer" :
+			singerName = query.getSlotEntities().get(0).getOriginalValue();
+			returnValue.setReply("你要聽" + singerName + "的哪一首歌 ? ");
 			break;
+			
+		//case "search_singer_custom" :
+			
 		default :
 			returnValue.setReply("------架構中------");
 		}
