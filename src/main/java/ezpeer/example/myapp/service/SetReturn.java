@@ -20,6 +20,7 @@ public class SetReturn {
 		result.setReturnMessage("Success");
 		 Gson gson = new Gson();
 		ReturnValueModel returnValue = setReturnValueModel();
+		System.out.println(gson.toJson(returnValue));
 		result.setReturnValue(gson.toJson(returnValue));
 		return result;
 	}
