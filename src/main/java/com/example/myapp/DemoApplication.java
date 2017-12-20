@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,10 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.service.SetReturn;
+import com.example.vo.ReturnModel;
+
 
 @Controller
 @SpringBootApplication
 public class DemoApplication {
+	
+	@Autowired
+	private SetReturn result;
 	
 	@RequestMapping("/")
     @ResponseBody
@@ -22,15 +29,16 @@ public class DemoApplication {
     }
 	
 	@RequestMapping(value = "/skill/weather", method = RequestMethod.POST)
-    public @ResponseBody void getResponse(@RequestBody String taskQuery) {
+    public @ResponseBody ReturnModel getResponse(@RequestBody String taskQuery) {
  
         /**
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
 		System.out.println("---------skill ---------------");
-		System.out.println(taskQuery);
- 
+		//System.out.println(taskQuery);
+		ReturnModel returnResult = result.setReturnModel();
         
+		return returnResult;
     }
 	
 	public static void main(String[] args) {
