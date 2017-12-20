@@ -6,12 +6,13 @@ import com.google.gson.Gson;
 
 import ezpeer.example.myapp.vo.ReturnModel;
 import ezpeer.example.myapp.vo.ReturnValueModel;
+import ezpeer.example.myapp.vo.TaskQuery;
 
 @Service
 public class SetReturn {
 	
 	
-	public ReturnModel setReturnModel() {
+	public ReturnModel setReturnModel(TaskQuery query) {
 		
 		ReturnModel result = new ReturnModel();
 		
@@ -19,19 +20,29 @@ public class SetReturn {
 		result.setReturnErrorSolution(" ");
 		result.setReturnMessage("Success");
 		 Gson gson = new Gson();
-		ReturnValueModel returnValue = setReturnValueModel();
+		ReturnValueModel returnValue = setReturnValueModel(query);
 		System.out.println(gson.toJson(returnValue));
 		result.setReturnValue(returnValue);
 		return result;
 	}
 	
-	public ReturnValueModel setReturnValueModel() {
+	public ReturnValueModel setReturnValueModel(TaskQuery query) {
 		
 		ReturnValueModel returnValue = new ReturnValueModel();
 		
-		returnValue.setReply("------架構中------");
+		switch(query.getIntentName()) {
+		
+		case "search_song" :
+			String songName = query.getSlotEntities().get(0).getIntentParameterName();
+			String singerName = query.getSlotEntities().get(1).getIntentParameterName();
+			returnValue.setReply("你要聽的歌曲為 :"+ singerName + "的" + songName);
+		default :
+			returnValue.setReply("------架構中------");
+		}
+		
 		returnValue.setResultType("RESULT");
 		return returnValue;
 	}
-
+	
+	
 }

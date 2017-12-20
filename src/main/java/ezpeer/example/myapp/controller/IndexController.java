@@ -41,7 +41,7 @@ public class IndexController {
 		System.out.println(query.getIntentName());
 		
 		
-		ReturnModel returnResult = result.setReturnModel();
+		ReturnModel returnResult = result.setReturnModel(query);
 		
 		
 		System.out.println(gson.toJson(returnResult));
