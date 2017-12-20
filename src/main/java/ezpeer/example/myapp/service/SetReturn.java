@@ -33,9 +33,11 @@ public class SetReturn {
 		switch(query.getIntentName()) {
 		
 		case "search_song" :
+			System.out.println("-------ya it is search_song--------");
 			String songName = query.getSlotEntities().get(0).getIntentParameterName();
 			String singerName = query.getSlotEntities().get(1).getIntentParameterName();
 			returnValue.setReply("你要聽的歌曲為 :"+ singerName + "的" + songName);
+			break;
 		default :
 			returnValue.setReply("------架構中------");
 		}
