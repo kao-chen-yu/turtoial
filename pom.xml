@@ -39,13 +39,7 @@
 		
 		  
   		  
-  		  <dependency>
-			<groupId>com.alibaba.da.coin.ide.spi</groupId>
-			<artifactId>semantic-execute-meta</artifactId>
-			<version>1.0.4</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/semantic-execute-meta-1.0.4.jar</systemPath>
-			</dependency>
+  		
   
 	</dependencies>
 
