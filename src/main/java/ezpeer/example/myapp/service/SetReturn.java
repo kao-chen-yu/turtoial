@@ -146,6 +146,7 @@ public class SetReturn {
 				List<String> songs = Files.readAllLines(path);
 				
 				for(int i=0;i<songs.size();i++) {
+					System.out.println(songs.get(i));
 					Map<String,String> song1 = new HashMap<>();
 					ActionModel action1 = new ActionModel();
 					
