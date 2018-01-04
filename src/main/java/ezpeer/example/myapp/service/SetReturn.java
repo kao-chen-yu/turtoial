@@ -35,11 +35,11 @@ public class SetReturn {
 	public ReturnValueModel setReturnValueModel(TaskQuery query) {
 		
 		ReturnValueModel returnValue = new ReturnValueModel();
-		ActionModel action = new ActionModel();
+		
 		List<ActionModel> actions = new ArrayList<>();
 		String songName = "";
 		String singerName = "";
-		Map<String,String> song = new HashMap<>();
+		
 		
 		switch(query.getIntentName()) {
 
@@ -81,6 +81,18 @@ public class SetReturn {
 			break;
 			
 		case "test_url" :
+			Map<String,String> song = new HashMap<>();
+			ActionModel action = new ActionModel();
+			song.put("audioGenieId", "947");
+			action.setProperties(song);
+			actions.add(action);
+			song = new HashMap<>();
+			action = new ActionModel();
+			song.put("audioGenieId", "948");
+			action.setProperties(song);
+			actions.add(action);
+			song = new HashMap<>();
+			action = new ActionModel();
 			song.put("audioGenieId", "946");
 			action.setProperties(song);
 			actions.add(action);
