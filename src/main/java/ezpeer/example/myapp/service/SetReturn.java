@@ -78,9 +78,9 @@ public class SetReturn {
 			break;
 			
 		case "test_url" :
-			song.put("audioGenieId", "946");
-			actions.setProperties(song);
-			returnValue.setActions(actions);
+			//song.put("audioGenieId", "946");
+			//actions.setProperties(song);
+			//returnValue.setActions(actions);
 			returnValue.setReply("開始撥放 一顆蘋果");
 			break;
 		default :
