@@ -123,8 +123,9 @@ public class SetReturn {
 			String song_id="";
 			List<String> lines = new ArrayList<String>();
 			path = Paths.get("./playlist/"+playlist_name+".txt");
+			Path singer_path = Paths.get("./songId/" + singerName + ".txt");
 			try {
-				List<String> songs = Files.readAllLines(path);
+				List<String> songs = Files.readAllLines(singer_path);
 				for(int i=0;i<songs.size();i++) {
 					if(songs.get(i).contains(songName))
 						song_id = songs.get(i).split("\t")[1];
