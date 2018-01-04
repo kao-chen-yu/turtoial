@@ -122,8 +122,8 @@ public class SetReturn {
 			songName = query.getSlotEntities().get(2).getOriginalValue();
 			String song_id="";
 			List<String> lines = new ArrayList<String>();
-			path = Paths.get("./playlist/"+playlist_name+".txt");
-			Path singer_path = Paths.get("./songId/" + singerName + ".txt");
+			path = Paths.get("./playlist/test.txt");
+			Path singer_path = Paths.get("./songId/test.txt");
 			try {
 				List<String> songs = Files.readAllLines(singer_path);
 				for(int i=0;i<songs.size();i++) {
