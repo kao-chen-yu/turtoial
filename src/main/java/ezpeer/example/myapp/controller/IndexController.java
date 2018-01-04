@@ -61,10 +61,9 @@ public class IndexController {
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
 		System.out.println("---------skill test---------------");
-		Path path = Paths.get("./playlist/test.txt");
+		Path path = Paths.get("./playlist/测试.txt");
 		try {
-			List<String> lines = Files.readAllLines(path);
-			lines.forEach(line -> System.out.println(line));
+			Files.createFile(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
