@@ -4,7 +4,14 @@ public class ReturnValueModel {
 	
 	private String reply;
 	private String resultType;
+	private ActionModel actions;
 	
+	public ActionModel getActions() {
+		return actions;
+	}
+	public void setActions(ActionModel actions) {
+		this.actions = actions;
+	}
 	public String getReply() {
 		return reply;
 	}

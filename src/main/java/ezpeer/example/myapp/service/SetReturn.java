@@ -1,9 +1,13 @@
 package ezpeer.example.myapp.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import ezpeer.example.myapp.vo.ActionModel;
 import ezpeer.example.myapp.vo.ReturnModel;
 import ezpeer.example.myapp.vo.ReturnValueModel;
 import ezpeer.example.myapp.vo.TaskQuery;
@@ -29,8 +33,11 @@ public class SetReturn {
 	public ReturnValueModel setReturnValueModel(TaskQuery query) {
 		
 		ReturnValueModel returnValue = new ReturnValueModel();
+		ActionModel actions = new ActionModel();
 		String songName = "";
 		String singerName = "";
+		Map<String,String> song = new HashMap<>();
+		
 		switch(query.getIntentName()) {
 
 		case "call_MyMusic" :
@@ -71,7 +78,10 @@ public class SetReturn {
 			break;
 			
 		case "test_url" :
-			returnValue.setReply("http://www.google.com");
+			song.put("audioGenieId", "946");
+			actions.setProperties(song);
+			returnValue.setActions(actions);
+			returnValue.setReply("開始撥放 一顆蘋果");
 			break;
 		default :
 			returnValue.setReply("------架構中------");
