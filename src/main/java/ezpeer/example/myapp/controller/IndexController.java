@@ -60,7 +60,7 @@ public class IndexController {
         /**
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
-		System.out.println("---------skill test--------------");
+		System.out.println("---------skill test---------------");
 		Path path = Paths.get("./playlist/測試.txt");
 		try {
 			Files.createFile(path);
