@@ -121,17 +121,19 @@ public class SetReturn {
 			singerName = query.getSlotEntities().get(1).getOriginalValue();
 			songName = query.getSlotEntities().get(2).getOriginalValue();
 			String song_id="";
-			List<String> lines = new ArrayList<String>();
+			
 			path = Paths.get("./playlist/test.txt");
 			Path singer_path = Paths.get("./songId/test.txt");
 			try {
 				List<String> songs = Files.readAllLines(singer_path);
+				List<String> lines = Files.readAllLines(path);
 				for(int i=0;i<songs.size();i++) {
-					if(songs.get(i).contains(songName))
+					if(songs.get(i).contains(songName)){
 						song_id = songs.get(i).split("\t")[1];
-						lines.add(song_id);
+						lines.add(song_id);}
 				}
 				System.out.println("get song_id" + song_id);
+		
 			Files.write(path, lines);	
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
