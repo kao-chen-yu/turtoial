@@ -35,7 +35,7 @@ public class SetReturn {
 
 		case "call_MyMusic" :
 			System.out.println("-------wake up MyMusic--------");
-			returnValue.setReply(" MyMusic 服務啟動...請問要聽哪首歌? ");
+			returnValue.setReply(" My Music 服務啟動...請問要聽哪首歌? ");
 			break;
 			
 		case "search_song" :
@@ -49,7 +49,7 @@ public class SetReturn {
 				songName = query.getSlotEntities().get(1).getOriginalValue();	
 			}
 			System.out.println(songName);
-			returnValue.setReply("你要聽的歌曲為 :" + singerName + "的" + songName);
+			returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
 			break;
 		
 		case "search_singer" :
@@ -70,8 +70,9 @@ public class SetReturn {
 			
 			break;
 			
-		//case "search_singer_custom" :
-			
+		case "test_url" :
+			returnValue.setReply("http://www.google.com");
+			break;
 		default :
 			returnValue.setReply("------架構中------");
 		}
