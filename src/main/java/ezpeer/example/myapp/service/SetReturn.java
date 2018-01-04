@@ -136,6 +136,7 @@ public class SetReturn {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			returnValue.setReply("------add_song中------");
 			break;
 		default :
 			returnValue.setReply("------架構中------");
