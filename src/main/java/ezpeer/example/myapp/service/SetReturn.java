@@ -1,6 +1,8 @@
 package ezpeer.example.myapp.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -33,7 +35,8 @@ public class SetReturn {
 	public ReturnValueModel setReturnValueModel(TaskQuery query) {
 		
 		ReturnValueModel returnValue = new ReturnValueModel();
-		ActionModel actions = new ActionModel();
+		ActionModel action = new ActionModel();
+		List<ActionModel> actions = new ArrayList<>();
 		String songName = "";
 		String singerName = "";
 		Map<String,String> song = new HashMap<>();
@@ -78,9 +81,10 @@ public class SetReturn {
 			break;
 			
 		case "test_url" :
-			//song.put("audioGenieId", "946");
-			//actions.setProperties(song);
-			//returnValue.setActions(actions);
+			song.put("audioGenieId", "946");
+			action.setProperties(song);
+			actions.add(action);
+			returnValue.setActions(actions);
 			returnValue.setReply("開始撥放 一顆蘋果");
 			break;
 		default :

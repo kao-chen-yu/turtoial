@@ -1,15 +1,18 @@
 package ezpeer.example.myapp.vo;
 
+import java.util.List;
+
 public class ReturnValueModel {
 	
 	private String reply;
 	private String resultType;
-	private ActionModel actions;
+	private List<ActionModel> actions;
 	
-	public ActionModel getActions() {
+	
+	public List<ActionModel> getActions() {
 		return actions;
 	}
-	public void setActions(ActionModel actions) {
+	public void setActions(List<ActionModel> actions) {
 		this.actions = actions;
 	}
 	public String getReply() {
