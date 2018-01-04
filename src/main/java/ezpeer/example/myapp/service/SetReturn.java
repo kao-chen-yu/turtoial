@@ -87,6 +87,11 @@ public class SetReturn {
 			returnValue.setActions(actions);
 			returnValue.setReply("開始撥放 一顆蘋果");
 			break;
+			
+		case "create_playlist" :
+			String playlist_name = query.getSlotEntities().get(0).getOriginalValue();
+			returnValue.setReply(playlist_name + "建立成功");
+			break;
 		default :
 			returnValue.setReply("------架構中------");
 		}
