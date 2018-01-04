@@ -137,7 +137,28 @@ public class SetReturn {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			returnValue.setReply("------add_song中------");
+			returnValue.setReply("加入"+playlist_name+"成功");
+			break;
+			
+		case "play_playlist" :
+			path = Paths.get("./playlist/test.txt");
+			try {
+				List<String> songs = Files.readAllLines(path);
+				
+				for(int i=0;i<songs.size();i++) {
+					Map<String,String> song1 = new HashMap<>();
+					ActionModel action1 = new ActionModel();
+					
+					song1.put("audioGenieId",songs.get(i));
+					action1.setProperties(song1);
+					actions.add(action1);
+				}
+				returnValue.setActions(actions);
+				returnValue.setReply("開始撥放 playlist");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		default :
 			returnValue.setReply("------架構中------");
