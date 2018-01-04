@@ -1,5 +1,9 @@
 package ezpeer.example.myapp.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -102,7 +106,36 @@ public class SetReturn {
 			
 		case "create_playlist" :
 			String playlist_name = query.getSlotEntities().get(0).getOriginalValue();
+			Path path = Paths.get("./playlist/"+playlist_name+".txt");
+			try {
+				Files.createFile(path);			
 			returnValue.setReply(playlist_name + "建立成功");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+			returnValue.setReply(playlist_name + "建立失敗");
+			}
+			break;
+		
+		case "add_song" :
+			playlist_name = query.getSlotEntities().get(0).getOriginalValue();
+			singerName = query.getSlotEntities().get(1).getOriginalValue();
+			songName = query.getSlotEntities().get(2).getOriginalValue();
+			String song_id="";
+			List<String> lines = new ArrayList<String>();
+			path = Paths.get("./playlist/"+playlist_name+".txt");
+			try {
+				List<String> songs = Files.readAllLines(path);
+				for(int i=0;i<songs.size();i++) {
+					if(songs.get(i).contains(songName))
+						song_id = songs.get(i).split("\t")[1];
+						lines.add(song_id);
+				}
+				System.out.println("get song_id" + song_id);
+			Files.write(path, lines);	
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		default :
 			returnValue.setReply("------架構中------");

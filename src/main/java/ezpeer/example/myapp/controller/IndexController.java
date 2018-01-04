@@ -1,5 +1,11 @@
 package ezpeer.example.myapp.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,12 +55,20 @@ public class IndexController {
     }
 	
 	@RequestMapping(value = "/skill/test", method = RequestMethod.GET)
-    public @ResponseBody void getResponseTest(@RequestBody String taskQuery) {
+    public @ResponseBody void getResponseTest() {
  
         /**
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
 		System.out.println("---------skill test---------------");
+		Path path = Paths.get("./playlist/test.txt");
+		try {
+			List<String> lines = Files.readAllLines(path);
+			lines.forEach(line -> System.out.println(line));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//System.out.println(taskQuery);
  
         
