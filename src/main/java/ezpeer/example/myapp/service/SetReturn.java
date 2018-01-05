@@ -104,7 +104,7 @@ public class SetReturn {
 			actions.add(action);
 			returnValue.setActions(actions);
 			returnValue.setReply("開始撥放 一顆蘋果");
-			returnValue.setResultType("CONFIRM");
+			returnValue.setResultType("RESULT");
 			break;
 			
 		case "create_playlist" :
