@@ -50,6 +50,7 @@ public class SetReturn {
 		case "call_MyMusic" :
 			System.out.println("-------wake up MyMusic--------");
 			returnValue.setReply(" My Music 服務啟動...請問要聽哪首歌? ");
+			returnValue.setResultType("CONFIRM");
 			break;
 			
 		case "search_song" :
@@ -64,6 +65,7 @@ public class SetReturn {
 			}
 			System.out.println(songName);
 			returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
+			returnValue.setResultType("CONFIRM");
 			break;
 		
 		case "search_singer" :
@@ -81,7 +83,7 @@ public class SetReturn {
 				singerName = query.getSlotEntities().get(0).getOriginalValue();
 				returnValue.setReply("你要聽" + singerName + "的哪一首歌 ? ");
 			}
-			
+			returnValue.setResultType("CONFIRM");
 			break;
 			
 		case "test_url" :
@@ -102,6 +104,7 @@ public class SetReturn {
 			actions.add(action);
 			returnValue.setActions(actions);
 			returnValue.setReply("開始撥放 一顆蘋果");
+			returnValue.setResultType("CONFIRM");
 			break;
 			
 		case "create_playlist" :
@@ -114,6 +117,7 @@ public class SetReturn {
 				// TODO Auto-generated catch block
 			returnValue.setReply(playlist_name + "建立失敗");
 			}
+			returnValue.setResultType("CONFIRM");
 			break;
 		
 		case "add_song" :
@@ -140,6 +144,7 @@ public class SetReturn {
 				e.printStackTrace();
 			}
 			returnValue.setReply("加入"+playlist_name+"成功");
+			returnValue.setResultType("RESULT");
 			break;
 			
 		case "play_playlist" :
@@ -158,6 +163,7 @@ public class SetReturn {
 				}
 				returnValue.setActions(actions);
 				returnValue.setReply("開始撥放 playlist");
+				returnValue.setResultType("RESULT");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -165,9 +171,10 @@ public class SetReturn {
 			break;
 		default :
 			returnValue.setReply("------架構中------");
+			returnValue.setResultType("CONFIRM");
 		}
 		
-		returnValue.setResultType("CONFIRM");
+		
 		return returnValue;
 	}
 	
