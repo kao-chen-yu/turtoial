@@ -167,7 +167,7 @@ public class SetReturn {
 			returnValue.setReply("------架構中------");
 		}
 		
-		returnValue.setResultType("RESULT");
+		returnValue.setResultType("CONFIRM");
 		return returnValue;
 	}
 	
