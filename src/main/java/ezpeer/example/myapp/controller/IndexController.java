@@ -1,5 +1,6 @@
 package ezpeer.example.myapp.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -67,12 +68,15 @@ public class IndexController {
 		Gson gson = new Gson();
 		System.out.println("---------skill test---------------");
 		String result = "";
-		try {
+		/*try {
 			result =getSearch.getSearch("五月天+倔強");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		
+		String path = "./playlist/測試.txt";
+		File file = new File(path);
 		
 		return result;
     }
