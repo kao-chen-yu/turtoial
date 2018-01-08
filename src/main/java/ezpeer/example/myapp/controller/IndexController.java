@@ -67,7 +67,7 @@ public class IndexController {
          */
 		Gson gson = new Gson();
 		System.out.println("---------skill test---------------");
-		String result = "";
+		String results = "";
 		/*try {
 			result =getSearch.getSearch("五月天+倔強");
 		} catch (Exception e) {
@@ -75,10 +75,13 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		String path = "./playlist/一颗苹果.txt";
-		File file = new File(path);
+		String path = "./songId/五月天.txt";
+		//File file = new File(path);
+		List<String> songs = result.playlistRead(path);
 		
-		return result;
+		for(String song : songs)
+			results = results + song;
+		return results;
     }
 
 }
