@@ -1,5 +1,10 @@
 package ezpeer.example.myapp.service;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -129,14 +134,8 @@ public class SetReturn {
 			
 		case "create_playlist" :
 			String playlist_name = query.getSlotEntities().get(0).getOriginalValue();
-			Path path = Paths.get("./playlist/"+playlist_name+".txt");
-			try {
-				Files.createFile(path);			
-			returnValue.setReply(playlist_name + "建立成功");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-			returnValue.setReply(playlist_name + "建立失敗");
-			}
+			String listPath = "./playlist/"+ playlist_name +".txt";
+			File file = new File(listPath);
 			returnValue.setResultType("CONFIRM");
 			break;
 		
@@ -146,31 +145,30 @@ public class SetReturn {
 			songName = query.getSlotEntities().get(2).getOriginalValue();
 			String song_id="";
 			
-			path = Paths.get("./playlist/test.txt");
-			Path singer_path = Paths.get("./songId/test.txt");
-			try {
-				List<String> songs = Files.readAllLines(singer_path);
-				List<String> lines = Files.readAllLines(path);
-				for(int i=0;i<songs.size();i++) {
-					if(songs.get(i).contains(songName)){
-						song_id = songs.get(i).split("\t")[1];
-						lines.add(song_id);}
-				}
-				System.out.println("get song_id" + song_id);
-		
-			Files.write(path, lines);	
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			listPath = "./playlist/"+ playlist_name +".txt";
+			String singerPath = "./songId/"+singerName+".txt";
+			
+			List<String> playList = playlistRead(listPath);
+			List<String> songList = playlistRead(singerPath);
+			
+			for(String songInfo : songList) {
+				if(songInfo.contains(songName)){
+					song_id = songInfo.split("\t")[1];
+					playList.add(song_id);
+					}
 			}
+			
+			PlaylistWrite(listPath,playList);
+			
 			returnValue.setReply("加入"+playlist_name+"成功");
 			returnValue.setResultType("RESULT");
 			break;
 			
 		case "play_playlist" :
-			path = Paths.get("./playlist/test.txt");
-			try {
-				List<String> songs = Files.readAllLines(path);
+			playlist_name = query.getSlotEntities().get(0).getOriginalValue();
+			listPath = "./playlist/"+ playlist_name +".txt";
+			
+				List<String> songs = playlistRead(listPath);
 				
 				for(int i=0;i<songs.size();i++) {
 					System.out.println(songs.get(i));
@@ -184,20 +182,15 @@ public class SetReturn {
 				returnValue.setActions(actions);
 				returnValue.setReply("開始撥放 playlist");
 				returnValue.setResultType("RESULT");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			break;
 		
 		case "start_play" :
 			if(query.getSlotEntities().size()>1) {
-				singer_path = Paths.get("./songId/test.txt");
+				singerPath = "./songId/"+singerName+".txt";
 				singerName = query.getSlotEntities().get(1).getOriginalValue();
 				songName = query.getSlotEntities().get(2).getOriginalValue();
 				
-				try {
-					List<String> songs = Files.readAllLines(singer_path);
+					songs = playlistRead(singerPath);
 
 					for(int i=0;i<songs.size();i++) {
 						if(songs.get(i).contains(songName)){
@@ -214,15 +207,27 @@ public class SetReturn {
 						}
 					}
 
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 				
 			}else {
 				returnValue.setReply("還沒搜尋歌曲 請問要聽哪首歌");
 				returnValue.setResultType("RESULT");
 			}
+			break;
+		
+		case "list_playlist" :
+			
+			playlist_name = query.getSlotEntities().get(0).getOriginalValue();
+			listPath = "./playlist/"+ playlist_name +".txt";
+			
+			songs = playlistRead(listPath);
+			String songsList="";
+			for(String song_info : songs) {
+				songsList = songsList + song_info + "  ";
+			}
+			
+			returnValue.setReply(songsList);
+			returnValue.setResultType("CONFIRM");
 			break;
 		default :
 			returnValue.setReply("------架構中------");
@@ -233,5 +238,70 @@ public class SetReturn {
 		return returnValue;
 	}
 	
+	public List<String> playlistRead(String path){
+		
+		BufferedReader br = null;
+		FileReader fr = null;
+		List<String> readList = new ArrayList<>();
+
+		try {
+			fr = new FileReader(path);
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;					
+			while ((sCurrentLine = br.readLine()) != null) {
+				readList.add(sCurrentLine);
+			}
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			try {
+
+				if (br != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+		}	
+		
+		return readList;
+	}
 	
+	public void PlaylistWrite(String path , List<String> songList) {
+		
+		try {
+            // Assume default encoding.
+            FileWriter fileWriter =
+                new FileWriter(path);
+
+            // Always wrap FileWriter in BufferedWriter.
+            BufferedWriter bufferedWriter =
+                new BufferedWriter(fileWriter);
+
+            // Note that write() does not automatically
+            // append a newline character.
+           for(String song : songList) {
+            bufferedWriter.write(song);
+            bufferedWriter.newLine();
+           }
+
+            // Always close files.
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error writing to file '"
+                + path + "'");
+            // Or we could just do this:
+            // ex.printStackTrace();
+        }
+	}
 }
