@@ -75,7 +75,7 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		String path = "./songId/五月天.txt";
+		String path = "./songId/周杰倫.txt";
 		//File file = new File(path);
 		List<String> songs = result.playlistRead(path);
 		
