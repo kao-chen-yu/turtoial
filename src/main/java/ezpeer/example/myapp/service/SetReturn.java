@@ -186,10 +186,10 @@ public class SetReturn {
 		
 		case "start_play" :
 			if(query.getSlotEntities().size()>1) {
-				singerPath = "./songId/"+singerName+".txt";
+				
 				singerName = query.getSlotEntities().get(1).getOriginalValue();
 				songName = query.getSlotEntities().get(2).getOriginalValue();
-				
+				singerPath = "./songId/"+singerName+".txt";
 					songs = playlistRead(singerPath);
 
 					for(int i=0;i<songs.size();i++) {
