@@ -83,7 +83,7 @@ public class IndexController {
 		for(String song : songs)
 			results = results + song;*/
 		
-		Path dir = Paths.get("./playlist");
+		Path dir = Paths.get("./songId");
 		
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir,"*")){
 			
