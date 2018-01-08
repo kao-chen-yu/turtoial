@@ -47,7 +47,7 @@ public class SetReturn {
 	public ReturnValueModel setReturnValueModel(TaskQuery query) {
 		
 		ReturnValueModel returnValue = new ReturnValueModel();
-		List<String> singerLocation = playlistRead("./songId/singerlocation.txt");
+		List<String> singerLocation = playlistRead("./songId/test.txt");
 		List<ActionModel> actions = new ArrayList<>();
 		String songName = "";
 		String singerName = "";
