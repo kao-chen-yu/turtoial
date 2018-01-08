@@ -69,8 +69,8 @@ public class SetReturn {
 			System.out.println(songName);
 			try {
 				String result = getSearch.getSearch(singerName + "+" + songName);
-				returnValue.setReply(result + "你要聽哪一首");
-				//returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
+				//returnValue.setReply(result + "你要聽哪一首");
+				returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
 				returnValue.setResultType("CONFIRM");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -90,8 +90,8 @@ public class SetReturn {
 				}
 				try {
 					String result = getSearch.getSearch(singerName + "+" + songName);
-					returnValue.setReply(result + "你要聽哪一首");
-					//returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
+					//returnValue.setReply(result + "你要聽哪一首");
+					returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
 					returnValue.setResultType("CONFIRM");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -187,6 +187,41 @@ public class SetReturn {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			break;
+		
+		case "start_play" :
+			if(query.getSlotEntities().size()>1) {
+				singer_path = Paths.get("./songId/test.txt");
+				singerName = query.getSlotEntities().get(1).getOriginalValue();
+				songName = query.getSlotEntities().get(2).getOriginalValue();
+				
+				try {
+					List<String> songs = Files.readAllLines(singer_path);
+
+					for(int i=0;i<songs.size();i++) {
+						if(songs.get(i).contains(songName)){
+							song_id = songs.get(i).split("\t")[1];
+							Map<String,String> song1 = new HashMap<>();
+							ActionModel action1 = new ActionModel();
+							
+							song1.put("audioGenieId",song_id);
+							action1.setProperties(song1);
+							actions.add(action1);
+							returnValue.setActions(actions);
+							returnValue.setReply("開始撥放 start_play");
+							returnValue.setResultType("RESULT");
+						}
+					}
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}else {
+				returnValue.setReply("還沒搜尋歌曲 請問要聽哪首歌");
+				returnValue.setResultType("RESULT");
 			}
 			break;
 		default :
