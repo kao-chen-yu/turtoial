@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
@@ -21,6 +22,8 @@ import ezpeer.example.myapp.vo.TaskQuery;
 @Service
 public class SetReturn {
 	
+	@Autowired
+	private GetSearch getSearch;	
 	
 	public ReturnModel setReturnModel(TaskQuery query) {
 		
@@ -64,8 +67,16 @@ public class SetReturn {
 				songName = query.getSlotEntities().get(1).getOriginalValue();	
 			}
 			System.out.println(songName);
-			returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
-			returnValue.setResultType("CONFIRM");
+			try {
+				String result = getSearch.getSearch(singerName + "+" + songName);
+				returnValue.setReply(result + "你要聽哪一首");
+				//returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
+				returnValue.setResultType("CONFIRM");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			break;
 		
 		case "search_singer" :
@@ -77,7 +88,16 @@ public class SetReturn {
 					singerName = query.getSlotEntities().get(0).getOriginalValue();
 					songName = query.getSlotEntities().get(1).getOriginalValue();	
 				}
-				returnValue.setReply("你要聽" + singerName + "的 " + songName);
+				try {
+					String result = getSearch.getSearch(singerName + "+" + songName);
+					returnValue.setReply(result + "你要聽哪一首");
+					//returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
+					returnValue.setResultType("CONFIRM");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 			else {
 				singerName = query.getSlotEntities().get(0).getOriginalValue();

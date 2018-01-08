@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import ezpeer.example.myapp.service.GetSearch;
 import ezpeer.example.myapp.service.SetReturn;
 import ezpeer.example.myapp.vo.ReturnModel;
 import ezpeer.example.myapp.vo.TaskQuery;
@@ -25,6 +26,9 @@ public class IndexController {
 	
 	@Autowired
 	private SetReturn result;
+	
+	@Autowired
+	private GetSearch getSearch;
 	
 	@RequestMapping("/")
     @ResponseBody
@@ -55,22 +59,22 @@ public class IndexController {
     }
 	
 	@RequestMapping(value = "/skill/test", method = RequestMethod.GET)
-    public @ResponseBody void getResponseTest() {
+    public @ResponseBody String getResponseTest() {
  
         /**
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
+		Gson gson = new Gson();
 		System.out.println("---------skill test---------------");
-		Path path = Paths.get("./playlist/test.txt");
+		String result = "";
 		try {
-			Files.createFile(path);
-		} catch (IOException e) {
+			result =getSearch.getSearch("五月天+倔強");
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//System.out.println(taskQuery);
- 
-        
+		
+		return result;
     }
 
 }
