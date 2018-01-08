@@ -75,7 +75,7 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		String path = "./playlist/測試.txt";
+		String path = "./playlist/一颗苹果.txt";
 		File file = new File(path);
 		
 		return result;
