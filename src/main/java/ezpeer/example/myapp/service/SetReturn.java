@@ -47,7 +47,6 @@ public class SetReturn {
 	public ReturnValueModel setReturnValueModel(TaskQuery query) {
 		
 		ReturnValueModel returnValue = new ReturnValueModel();
-		List<String> singerLocation = playlistRead("./songId/test.txt");
 		List<ActionModel> actions = new ArrayList<>();
 		String songName = "";
 		String singerName = "";
@@ -136,8 +135,15 @@ public class SetReturn {
 			String playlist_name = query.getSlotEntities().get(0).getOriginalValue();
 			String listPath = "./playlist/"+ playlist_name +".txt";
 			File file = new File(listPath);
-			returnValue.setReply("建立"+playlist_name+"成功");
-			returnValue.setResultType("CONFIRM");
+			try {
+				file.createNewFile();
+				returnValue.setReply("建立"+playlist_name+"成功");
+				returnValue.setResultType("CONFIRM");
+			} catch (IOException e) {
+				returnValue.setReply("建立"+playlist_name+"失敗");
+				returnValue.setResultType("CONFIRM");
+			}
+			
 			break;
 		
 		case "add_song" :
@@ -146,7 +152,7 @@ public class SetReturn {
 			String singerId = "";
 			songName = query.getSlotEntities().get(2).getOriginalValue();
 			String song_id="";
-			
+			List<String> singerLocation = playlistRead("./songId/test.txt");
 			for(String location : singerLocation) {
 				if(location.contains(singerName))
 					singerId = location.split("\t")[1];
@@ -196,6 +202,7 @@ public class SetReturn {
 				singerName = query.getSlotEntities().get(1).getOriginalValue();
 				songName = query.getSlotEntities().get(2).getOriginalValue();
 				singerId = "";
+				singerLocation = playlistRead("./songId/test.txt");
 				for(String location : singerLocation) {
 					if(location.contains(singerName))
 						singerId = location.split("\t")[1];
