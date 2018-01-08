@@ -2,6 +2,7 @@ package ezpeer.example.myapp.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -75,12 +76,24 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		String path = "./songId/周杰倫.txt";
+		/*String path = "./songId/周杰倫.txt";
 		//File file = new File(path);
 		List<String> songs = result.playlistRead(path);
 		
 		for(String song : songs)
-			results = results + song;
+			results = results + song;*/
+		
+		Path dir = Paths.get("./songId");
+		
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir,"*")){
+			
+			for(Path file : stream) {
+				System.out.println(file.getFileName());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return results;
     }
 

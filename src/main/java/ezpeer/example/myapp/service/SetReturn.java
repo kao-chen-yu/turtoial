@@ -136,6 +136,7 @@ public class SetReturn {
 			String playlist_name = query.getSlotEntities().get(0).getOriginalValue();
 			String listPath = "./playlist/"+ playlist_name +".txt";
 			File file = new File(listPath);
+			returnValue.setReply("建立"+playlist_name+"成功");
 			returnValue.setResultType("CONFIRM");
 			break;
 		
