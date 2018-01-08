@@ -67,7 +67,7 @@ public class IndexController {
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
 		Gson gson = new Gson();
-		System.out.println("---------skill test---------------");
+		System.out.println("-----------skill test---------------");
 		String results = "";
 		/*try {
 			result =getSearch.getSearch("五月天+倔強");
