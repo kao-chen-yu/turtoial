@@ -54,7 +54,7 @@ public class GetSearch {
 		for(int i=0;i<songInfo.size();i++){
 		String singer =songInfo.get(0).getAsJsonObject().get("singer_name").getAsString();
 		String song =songInfo.get(0).getAsJsonObject().get("song_name").getAsString();
-		searchResult = searchResult +(i+1) + " " + singer + '\t' +  song + '\n';
+		searchResult = searchResult +(i+1) + " " + singer + " \t " +  song + " \n ";
 		}
 		return searchResult;
 	}
