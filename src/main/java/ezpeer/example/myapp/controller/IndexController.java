@@ -76,10 +76,10 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		
+		http://ezpeer2.herokuapp.com/search/%E4%BA%94%E6%9C%88%E5%A4%A9
 		//File file = new File(path);
 		try {
-			results = getSearch.getSongId("五月天");
+			results = getSearch.getSongId("%E4%BA%94%E6%9C%88%E5%A4%A9");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
