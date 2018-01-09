@@ -35,7 +35,7 @@ public class IndexController {
 	@RequestMapping("/")
     @ResponseBody
     String home() {
-      return "Hello World!";
+      return "Hello World 2 !";
     }
 	
 	@RequestMapping(value = "/skill/weather", method = RequestMethod.POST)
