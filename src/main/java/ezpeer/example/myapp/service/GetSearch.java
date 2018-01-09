@@ -63,12 +63,12 @@ public class GetSearch {
 	}
 	
 public String getSongId(String singerName) throws Exception{
-		
-		String url = "http://ezpeer2.herokuapp.com/search/"+singerName;
-		
-		String encodedURL = URLEncoder.encode(url, "UTF-8");
-		System.out.println(encodedURL);
-		URL obj = new URL(encodedURL);
+	
+		String encodedSinger = URLEncoder.encode(singerName, "UTF-8");
+		String url = "http://ezpeer2.herokuapp.com/search/"+encodedSinger;
+			
+		System.out.println(url);
+		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		String searchResult=" ";
 		List<String> songInfo = new ArrayList<>();  
