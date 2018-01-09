@@ -76,12 +76,14 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		String path = "./songId/周杰倫.txt";
-		//File file = new File(path);
-		List<String> songs = result.playlistRead(path);
 		
-		for(String song : songs)
-			results = results + song;
+		//File file = new File(path);
+		try {
+			results = getSearch.getSongId("五月天");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		/*Path dir = Paths.get("./songId");
 		
