@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.springframework.stereotype.Service;
 
@@ -62,12 +63,13 @@ public class GetSearch {
 public String getSongId(String singerName) throws Exception{
 		
 		String url = "http://ezpeer2.herokuapp.com/search/"+singerName;
-
-		URL obj = new URL(url);
+		
+		String encodedURL = URLEncoder.encode(url, "UTF-8");
+		System.out.println(encodedURL);
+		URL obj = new URL(encodedURL);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		String searchResult=" ";
-		
-		System.out.println(url);
+
 		// optional default is GET
 		con.setRequestMethod("GET");
 		
