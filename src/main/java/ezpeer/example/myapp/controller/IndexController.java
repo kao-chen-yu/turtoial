@@ -76,14 +76,14 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		/*String path = "./songId/周杰倫.txt";
+		String path = "./songId/周杰倫.txt";
 		//File file = new File(path);
 		List<String> songs = result.playlistRead(path);
 		
 		for(String song : songs)
-			results = results + song;*/
+			results = results + song;
 		
-		Path dir = Paths.get("./songId");
+		/*Path dir = Paths.get("./songId");
 		
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir,"*")){
 			
@@ -93,7 +93,7 @@ public class IndexController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		return results;
     }
 
