@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -69,7 +71,7 @@ public String getSongId(String singerName) throws Exception{
 		URL obj = new URL(encodedURL);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		String searchResult=" ";
-
+		List<String> songInfo = new ArrayList<>();  
 		// optional default is GET
 		con.setRequestMethod("GET");
 		
@@ -87,12 +89,13 @@ public String getSongId(String singerName) throws Exception{
 
 		while ((inputLine = in.readLine()) != null) {
 			response.append(inputLine);
+			songInfo.add(inputLine);
 		}
 		in.close();
 
 		//print result
 		System.out.println(response.toString());
-		
+		System.out.println(songInfo.size());
 		
 		return response.toString();
 	}
