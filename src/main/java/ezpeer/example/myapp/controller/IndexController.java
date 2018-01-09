@@ -68,7 +68,7 @@ public class IndexController {
          */
 		Gson gson = new Gson();
 		System.out.println("-----------skill test---------------");
-		String results = "";
+		String results = "--架構--";
 		/*try {
 			result =getSearch.getSearch("五月天+倔強");
 		} catch (Exception e) {
@@ -76,14 +76,14 @@ public class IndexController {
 			e.printStackTrace();
 		}*/
 		
-		http://ezpeer2.herokuapp.com/search/%E4%BA%94%E6%9C%88%E5%A4%A9
+		
 		//File file = new File(path);
-		try {
+		/*try {
 			results = getSearch.getSongId("五月天");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		/*Path dir = Paths.get("./songId");
 		

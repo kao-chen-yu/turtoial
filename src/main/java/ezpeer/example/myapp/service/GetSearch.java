@@ -62,7 +62,7 @@ public class GetSearch {
 		return searchResult;
 	}
 	
-public String getSongId(String singerName) throws Exception{
+public List<String> getSongId(String singerName) throws Exception{
 	
 		String encodedSinger = URLEncoder.encode(singerName, "UTF-8");
 		String url = "http://ezpeer2.herokuapp.com/search/"+encodedSinger;
@@ -97,6 +97,6 @@ public String getSongId(String singerName) throws Exception{
 		System.out.println(response.toString());
 		System.out.println(songInfo.size());
 		
-		return response.toString();
+		return songInfo;
 	}
 }

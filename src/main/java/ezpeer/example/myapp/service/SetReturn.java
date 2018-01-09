@@ -152,24 +152,24 @@ public class SetReturn {
 			String singerId = "";
 			songName = query.getSlotEntities().get(2).getOriginalValue();
 			String song_id="";
-			List<String> singerLocation = playlistRead("./songId/test.txt");
-			for(String location : singerLocation) {
-				if(location.contains(singerName))
-					singerId = location.split("\t")[1];
-			}
+			
 			listPath = "./playlist/"+ playlist_name +".txt";
-			String singerPath = "./songId/"+singerId+".txt";
+			
 			
 			List<String> playList = playlistRead(listPath);
-			List<String> songList = playlistRead(singerPath);
-			
-			for(String songInfo : songList) {
-				if(songInfo.contains(songName)){
-					song_id = songInfo.split("\t")[1];
-					playList.add(song_id);
-					}
-			}
-			
+			List<String> songList;
+			try {
+				songList = getSearch.getSongId(singerName);
+				for(String songInfo : songList) {
+					if(songInfo.contains(songName)){
+						song_id = songInfo.split("\t")[1];
+						playList.add(song_id);
+						}
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}					
 			PlaylistWrite(listPath,playList);
 			
 			returnValue.setReply("加入"+playlist_name+"成功");
@@ -202,14 +202,10 @@ public class SetReturn {
 				singerName = query.getSlotEntities().get(1).getOriginalValue();
 				songName = query.getSlotEntities().get(2).getOriginalValue();
 				singerId = "";
-				singerLocation = playlistRead("./songId/test.txt");
-				for(String location : singerLocation) {
-					if(location.contains(singerName))
-						singerId = location.split("\t")[1];
-				}
-				singerPath = "./songId/"+singerId+".txt";
-					songs = playlistRead(singerPath);
 
+				try {
+					songs = getSearch.getSongId(singerName);
+				
 					for(int i=0;i<songs.size();i++) {
 						if(songs.get(i).contains(songName)){
 							song_id = songs.get(i).split("\t")[1];
@@ -224,7 +220,10 @@ public class SetReturn {
 							returnValue.setResultType("RESULT");
 						}
 					}
-
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				
 			}else {
