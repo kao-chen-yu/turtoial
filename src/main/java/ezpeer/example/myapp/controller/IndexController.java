@@ -60,43 +60,99 @@ public class IndexController {
 		return gson.toJson(returnResult);
     }
 	
-	@RequestMapping(value = "/skill/test", method = RequestMethod.GET)
+	@RequestMapping(value = "/skill/test1", method = RequestMethod.GET)
     public @ResponseBody String getResponseTest() {
  
         /**
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
-		Gson gson = new Gson();
+		
 		System.out.println("-----------skill test---------------");
 		String results = "--架構--";
-		/*try {
-			result =getSearch.getSearch("五月天+倔強");
+		
+		try {
+			results = getSearch.createPlaylist("高震育");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		
-		
-		//File file = new File(path);
-		/*try {
-			results = getSearch.getSongId("五月天");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-		/*Path dir = Paths.get("./songId");
-		
-		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir,"*")){
-			
-			for(Path file : stream) {
-				System.out.println(file.getFileName());
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		}
 		return results;
     }
 
+	@RequestMapping(value = "/skill/test1", method = RequestMethod.GET)
+    public @ResponseBody String getResponseTest123() {
+ 
+        /**
+         * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
+         */
+		
+		System.out.println("-----------skill test---------------");
+		String results = "--架構--";
+		
+		try {
+			results = getSearch.listPlaylistName();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return results;
+    }
+	
+	@RequestMapping(value = "/skill/test2", method = RequestMethod.GET)
+    public @ResponseBody String getResponseTest2() {
+ 
+        /**
+         * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
+         */
+		
+		System.out.println("-----------skill test---------------");
+		String results = "--架構--";
+		
+		try {
+			results = getSearch.addSong("高震育", "五月天 一顆蘋果");
+			results = getSearch.addSong("高震育", "五月天 2012");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return results;
+    }
+	
+	@RequestMapping(value = "/skill/test3", method = RequestMethod.GET)
+    public @ResponseBody String getResponseTest3() {
+ 
+        /**
+         * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
+         */
+		
+		System.out.println("-----------skill test---------------");
+		String results = "--架構--";
+		
+		try {
+			results = getSearch.listPlaylist("高震育");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return results;
+    }
+	
+	@RequestMapping(value = "/skill/test4", method = RequestMethod.GET)
+    public @ResponseBody String getResponseTest4() {
+ 
+        /**
+         * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
+         */
+		
+		System.out.println("-----------skill test---------------");
+		String results = "--架構--";
+		
+		try {
+			results = getSearch.deletePlaylist("高震育");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return results;
+    }
 }
