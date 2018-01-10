@@ -7,6 +7,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -219,21 +221,12 @@ public class GetSearch {
 
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
-
-		//print result
-		System.out.println(response.toString());
 		
-		return response.toString();
+		Stream<String> strs = in.lines();
+		return strs.collect(Collectors.joining("\n"));
 	}
 	
-public String listPlaylistName() throws Exception{
+	public String listPlaylistName() throws Exception{
 		
 		
 		String url = "http://ezpeer2.herokuapp.com/listPlaylistname/" ;
@@ -265,4 +258,6 @@ public String listPlaylistName() throws Exception{
 		
 		return response.toString();
 	}
+	
+	
 }
