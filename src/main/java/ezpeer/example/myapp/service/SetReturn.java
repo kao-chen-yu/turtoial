@@ -221,7 +221,7 @@ public class SetReturn {
 			
 			String songList = getSearch.listPlaylist(playlistName);
 			
-			returnValue.setReply(songList.replaceAll("+", "\t"));
+			returnValue.setReply(songList);
 			returnValue.setResultType("CONFIRM");
 			break;
 			
