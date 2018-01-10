@@ -170,7 +170,7 @@ public class GetSearch {
 		
 		String encodePlaylist = URLEncoder.encode(playlistName, "UTF-8");
 		String encodeSongInfo = URLEncoder.encode(songInfo, "UTF-8");
-		String url = "http://ezpeer2.herokuapp.com/createplaylist/" + encodePlaylist + "/" + encodeSongInfo;
+		String url = "http://ezpeer2.herokuapp.com/addsong/" + encodePlaylist + "/" + encodeSongInfo;
 		
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
