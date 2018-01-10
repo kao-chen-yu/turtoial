@@ -224,6 +224,16 @@ public class SetReturn {
 			returnValue.setReply(songList.replaceAll("+", "\t"));
 			returnValue.setResultType("CONFIRM");
 			break;
+			
+		case "delete_playlist" :
+			playlistName = query.getSlotEntities().get(0).getOriginalValue();
+			
+			songList = getSearch.deletePlaylist(playlistName);
+			
+			returnValue.setReply(songList);
+			returnValue.setResultType("RESULT");
+			
+			break;
 		default :
 			returnValue.setReply("------架構中------");
 			returnValue.setResultType("CONFIRM");
