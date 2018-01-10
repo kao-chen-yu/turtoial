@@ -110,7 +110,7 @@ public class IndexController {
 		
 		try {
 			results = getSearch.addSong("高震育", "五月天 一顆蘋果");
-			results = getSearch.addSong("高震育", "五月天 2012");
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -149,6 +149,25 @@ public class IndexController {
 		
 		try {
 			results = getSearch.deletePlaylist("高震育");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return results;
+    }
+	
+	@RequestMapping(value = "/skill/test5", method = RequestMethod.GET)
+    public @ResponseBody String getResponseTest5() {
+ 
+        /**
+         * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
+         */
+		
+		System.out.println("-----------skill test---------------");
+		String results = "--架構--";
+		
+		try {
+			results = getSearch.addSong("高震育", "五月天 2012");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
