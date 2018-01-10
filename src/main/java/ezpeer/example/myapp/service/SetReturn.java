@@ -157,7 +157,7 @@ public class SetReturn {
 			
 		case "play_playlist" :
 			playlistName = query.getSlotEntities().get(0).getOriginalValue();			
-				
+			singerName = "五月天";	
 			String[]  listInfo= getSearch.listPlaylist(playlistName).split("\n");
 			List<String> songs = getSearch.getSongId(singerName);
 			  
@@ -168,7 +168,7 @@ public class SetReturn {
 					if(songs.get(j).contains(listInfo[i])) {
 						song = new HashMap<>();
 						action = new ActionModel();
-						song.put("audioGenieId",songs.get(j).split("\t")[1]);
+						song.put("audioGenieId",songs.get(j).split("\t")[2]);
 						action.setProperties(song);
 						actions.add(action);
 					}
@@ -191,7 +191,7 @@ public class SetReturn {
 				
 					for(int i=0;i<songs.size();i++) {
 						if(songs.get(i).contains(songName)){
-							song_id = songs.get(i).split("\t")[1];
+							song_id = songs.get(i).split("\t")[2];
 							Map<String,String> song1 = new HashMap<>();
 							ActionModel action1 = new ActionModel();
 							

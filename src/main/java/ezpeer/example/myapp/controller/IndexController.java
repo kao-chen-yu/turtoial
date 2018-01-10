@@ -129,7 +129,7 @@ public class IndexController {
 		String results = "--架構--";
 		
 		try {
-			results = getSearch.listPlaylist("高震育");
+			results = getSearch.listPlaylist("我的最爱");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
