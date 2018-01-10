@@ -60,7 +60,7 @@ public class IndexController {
 		return gson.toJson(returnResult);
     }
 	
-	@RequestMapping(value = "/skill/test1", method = RequestMethod.GET)
+	@RequestMapping(value = "/skill/test", method = RequestMethod.GET)
     public @ResponseBody String getResponseTest() {
  
         /**
