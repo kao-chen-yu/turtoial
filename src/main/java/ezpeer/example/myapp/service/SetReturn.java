@@ -69,19 +69,13 @@ public class SetReturn {
 			
 		case "search_song" :
 			
-			System.out.println("-------ya it is search_song--------");
-			if("song_name".equals(query.getSlotEntities().get(0).getIntentParameterName())) {
-				songName = query.getSlotEntities().get(0).getOriginalValue();
-				singerName = query.getSlotEntities().get(1).getOriginalValue();
-			}else {
-				singerName = query.getSlotEntities().get(0).getOriginalValue();
-				songName = query.getSlotEntities().get(1).getOriginalValue();	
-			}
+			System.out.println("-------ya it is search_song--------");		
+			songName = query.getSlotEntities().get(0).getOriginalValue();
 			System.out.println(songName);
 			try {
-				String result = getSearch.getSearch(singerName + "+" + songName);
+				String result = getSearch.getSearch(songName);
 				//returnValue.setReply(result + "你要聽哪一首");
-				returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
+				returnValue.setReply("你要聽的歌曲為 : " + songName);
 				returnValue.setResultType("CONFIRM");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
