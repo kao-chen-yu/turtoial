@@ -90,7 +90,7 @@ public class SetReturn {
 					}
 				}
 				returnValue.setReply("你要聽的歌曲為 : " + songName);
-				returnValue.setResultType("CONFIRM");
+				returnValue.setResultType("RESULT");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
