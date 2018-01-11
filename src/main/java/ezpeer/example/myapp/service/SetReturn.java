@@ -73,8 +73,22 @@ public class SetReturn {
 			songName = query.getSlotEntities().get(0).getOriginalValue();
 			System.out.println(songName);
 			try {
-				String result = getSearch.getSearch(songName);
+				//String result = getSearch.getSearch(songName);
 				//returnValue.setReply(result + "你要聽哪一首");
+				List<String> songs = getSearch.getSongId(singerName);
+				
+				for(int i=0;i<songs.size();i++) {
+					if(songs.get(i).contains(songName)){
+						String song_id = songs.get(i).split("\t")[2];
+						Map<String,String> song1 = new HashMap<>();
+						ActionModel action1 = new ActionModel();
+						
+						song1.put("audioGenieId",song_id);
+						action1.setProperties(song1);
+						actions.add(action1);
+						returnValue.setActions(actions);
+					}
+				}
 				returnValue.setReply("你要聽的歌曲為 : " + songName);
 				returnValue.setResultType("CONFIRM");
 			} catch (Exception e1) {
@@ -94,7 +108,7 @@ public class SetReturn {
 					songName = query.getSlotEntities().get(1).getOriginalValue();	
 				}
 				
-					String result = getSearch.getSearch(singerName + "+" + songName);
+					//String result = getSearch.getSearch(singerName + "+" + songName);
 					//returnValue.setReply(result + "你要聽哪一首");
 					returnValue.setReply("你要聽的歌曲為 : " + singerName + "的" + songName);
 					returnValue.setResultType("CONFIRM");
