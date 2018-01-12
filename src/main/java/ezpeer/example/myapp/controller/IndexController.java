@@ -130,7 +130,8 @@ public class IndexController {
 		String results = "--架構--";
 		
 		try {
-			results = getSearch.listPlaylist("我的最爱");
+			String[]  listInfo = getSearch.listPlaylist("我的最爱").split("\n");
+			System.out.println(listInfo[0]);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
