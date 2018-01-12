@@ -89,7 +89,7 @@ public class SetReturn {
 						returnValue.setActions(actions);
 					}
 				}
-				returnValue.setReply("你要聽的歌曲為 : " + songName);
+				returnValue.setReply("");
 				returnValue.setResultType("RESULT");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -139,7 +139,7 @@ public class SetReturn {
 			action.setProperties(song);
 			actions.add(action);
 			returnValue.setActions(actions);
-			returnValue.setReply("開始撥放 一顆蘋果");
+			returnValue.setReply(" ");
 			returnValue.setResultType("RESULT");
 			break;
 			
@@ -183,7 +183,7 @@ public class SetReturn {
 				}
 				}
 				returnValue.setActions(actions);
-				returnValue.setReply("開始撥放 playlist");
+				returnValue.setReply("");
 				returnValue.setResultType("RESULT");
 			break;
 		
@@ -207,7 +207,7 @@ public class SetReturn {
 							action1.setProperties(song1);
 							actions.add(action1);
 							returnValue.setActions(actions);
-							returnValue.setReply("開始撥放 start_play");
+							returnValue.setReply("");
 							returnValue.setResultType("RESULT");
 						}
 					}
