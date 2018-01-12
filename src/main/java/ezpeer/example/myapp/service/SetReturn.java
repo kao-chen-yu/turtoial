@@ -174,7 +174,7 @@ public class SetReturn {
 			singerName = "五月天";	
 			String[]  listInfo= getSearch.listPlaylist(playlistName).split("\n");
 			List<String> songs = getSearch.getSongId(singerName);
-			 if(listInfo.length>1) {
+			 if("查無此歌單".equals(listInfo[0])) {
 				for(int i=0;i<listInfo.length;i++) {
 				for(int j=0;j<songs.size();j++) {
 					System.out.println(songs.get(j));
