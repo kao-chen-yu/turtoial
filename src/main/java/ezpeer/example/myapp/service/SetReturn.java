@@ -14,6 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -168,7 +174,7 @@ public class SetReturn {
 			singerName = "五月天";	
 			String[]  listInfo= getSearch.listPlaylist(playlistName).split("\n");
 			List<String> songs = getSearch.getSongId(singerName);
-			  
+			 if(listInfo.length>1) {
 				for(int i=0;i<listInfo.length;i++) {
 				for(int j=0;j<songs.size();j++) {
 					System.out.println(songs.get(j));
@@ -185,6 +191,10 @@ public class SetReturn {
 				returnValue.setActions(actions);
 				returnValue.setReply("");
 				returnValue.setResultType("RESULT");
+				}else {
+				returnValue.setReply("查無此歌單");
+				returnValue.setResultType("RESULT");	
+				}
 			break;
 		
 		case "start_play" :
@@ -251,5 +261,26 @@ public class SetReturn {
 		return returnValue;
 	}
 	
+	public void TestForIfttt() throws Exception {
+        String payload = "{" +
+                "\"value1\": \"spring boot\", " +
+                "\"value2\": \"test\", " +
+                "\"value3\": \"if you see this success ! \"" +
+                "}";
+        StringEntity entity = new StringEntity(payload);
+
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        HttpPost request = new HttpPost("https://maker.ifttt.com/trigger/trigger_test/with/key/bXW4cy6DYvSZWUvt7V2_8G");
+        request.setEntity(entity);
+        System.out.println(payload);
+        HttpResponse response = httpClient.execute(request);
+        System.out.println(response.getStatusLine().getStatusCode());
+        request = new HttpPost("https://maker.ifttt.com/trigger/trigger_test/with/key/bXW4cy6DYvSZWUvt7V2_8G");
+        StringEntity params = new StringEntity(payload);
+        request.addHeader("content-type", "application/json");
+        request.setEntity(params);
+        httpClient.execute(request);
+     
+    }
 	
 }

@@ -71,7 +71,8 @@ public class IndexController {
 		String results = "--架構--";
 		
 		try {
-			results = getSearch.createPlaylist("高震育");
+			//results = getSearch.createPlaylist("高震育");
+			result.TestForIfttt();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
