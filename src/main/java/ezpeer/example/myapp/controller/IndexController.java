@@ -60,6 +60,17 @@ public class IndexController {
 		return gson.toJson(returnResult);
     }
 	
+	@RequestMapping(value = "/skill/weather2", method = RequestMethod.POST)
+    public @ResponseBody String getResponse2(@RequestBody String task) {
+		
+		 Gson gson = new Gson();
+		 
+        /**
+         * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
+         */
+		System.out.println(task);
+		return gson.toJson(task);
+    }
 	@RequestMapping(value = "/skill/test", method = RequestMethod.GET)
     public @ResponseBody String getResponseTest() {
  
