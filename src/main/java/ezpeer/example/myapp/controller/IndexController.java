@@ -68,8 +68,8 @@ public class IndexController {
         /**
          * 将开发者平台识别到的语义理解的结果（json字符串格式）转换成TaskQuery
          */
-		System.out.println(task);
-		return gson.toJson(task);
+		System.out.println("task is :" + task);
+		return "weather2 ! ";
     }
 	@RequestMapping(value = "/skill/test", method = RequestMethod.GET)
     public @ResponseBody String getResponseTest() {
