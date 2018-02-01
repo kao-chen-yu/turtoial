@@ -22,7 +22,9 @@ public class GetSearch {
 
 	public String getSearch(String searchInfo) throws Exception{
 		
-		String url = "http://search.mymusic.net.tw/mobile/index?select4=ftsong&pageNo=1&pageSize=3&out_type=json&textfield2="+searchInfo;
+		System.out.println("這是資訊 :" + searchInfo);
+		String encodedSearch = URLEncoder.encode(searchInfo, "UTF-8");
+		String url = "http://search.mymusic.net.tw/mobile/index?select4=ftsong&pageNo=1&pageSize=3&out_type=json&textfield2="+encodedSearch;
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
