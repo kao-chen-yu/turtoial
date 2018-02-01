@@ -129,7 +129,7 @@ public class SetReturn {
 			break;
 			
 		case "test_url" :
-			Map<String,String> song = new HashMap<>();
+			/*Map<String,String> song = new HashMap<>();
 			ActionModel action = new ActionModel();
 			song.put("audioGenieId", "947");
 			action.setProperties(song);
@@ -144,8 +144,8 @@ public class SetReturn {
 			song.put("audioGenieId", "946");
 			action.setProperties(song);
 			actions.add(action);
-			returnValue.setActions(actions);
-			returnValue.setReply(" ");
+			returnValue.setActions(actions);*/
+			returnValue.setReply("https://github.com/kao-chen-yu/turtoial/blob/master/song/%E5%80%94%E5%BC%B7.wav");
 			returnValue.setResultType("RESULT");
 			break;
 			
